@@ -13,5 +13,11 @@ namespace HangManAsp
         {
 
         }
+
+        protected void ButtonLetter_Click(object sender, EventArgs e)
+        {
+            string letter = (sender as Button).Text;
+            Response.Write($"<div>{letter}</div>");
+        }
     }
 }
