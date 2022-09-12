@@ -1,0 +1,12 @@
+﻿body {
+}
+
+.buttonsContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.buttonsContainer > * {
+    margin: 4px;
+}

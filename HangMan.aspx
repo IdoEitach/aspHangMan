@@ -5,10 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="Style.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div class="buttonsContainer">
             <asp:Button ID="Button1" runat="server" Text="Button" />
             <asp:Button ID="Button2" runat="server" Text="Button" />
             <asp:Button ID="Button4" runat="server" Text="Button" />
