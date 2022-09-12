@@ -11,8 +11,9 @@
     <form id="form1" runat="server">
         <div>
             <h1>איש תלוי</h1>
+            <img src="imgs/icon.png" width="100px"/>
             <h1>קטגוריות לבחירה</h1>
-            <div class="categories">
+            <div class="categoriesContainer">
                 <a href="HangMan.aspx?cat=general">ידע כללי</a>
                 <a href="HangMan.aspx?cat=cats">חתולים</a>
                 <a href="HangMan.aspx?cat=dogs">כלבים</a>

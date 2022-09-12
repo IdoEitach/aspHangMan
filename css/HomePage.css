@@ -1,2 +1,13 @@
 ﻿body {
+    text-align: center;
+}
+
+.categoriesContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.categoriesContainer > * {
+    margin: 4px;
+    font-size: 20px;
 }
