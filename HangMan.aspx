@@ -20,7 +20,7 @@
             <asp:Button ID="Button8" runat="server" Text="ח" />
             <asp:Button ID="Button9" runat="server" Text="ט" />
             <asp:Button ID="Button10" runat="server" Text="י" />
-            <asp:Button ID="Button11" runat="server" Text="כ" />
+            <asp:Button ID="Button11" runat="server" Text="כ" />    
             <asp:Button ID="Button12" runat="server" Text="ל" />
             <asp:Button ID="Button13" runat="server" Text="מ" />
             <asp:Button ID="Button14" runat="server" Text="נ" />
@@ -32,8 +32,6 @@
             <asp:Button ID="Button20" runat="server" Text="ר" />
             <asp:Button ID="Button21" runat="server" Text="ש" />
             <asp:Button ID="Button22" runat="server" Text="ת" />
-            
-
         </div>
     </form>
 </body>
