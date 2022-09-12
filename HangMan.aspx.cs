@@ -11,13 +11,18 @@ namespace HangManAsp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["Game"] == null)
+            {
+                Session["Game"] = new Game("אבג דהו");
+                Session["secretWord"] = (Session["Game"] as Game).HangmanWord();
+            }
         }
 
-        protected void ButtonLetter_Click(object sender, EventArgs e)
+        protected void Button_Click(object sender, EventArgs e)
         {
-            string letter = (sender as Button).Text;
-            Response.Write($"<div>{letter}</div>");
+            char letter = (sender as Button).Text[0];
+            (Session["Game"] as Game).addLetter(letter);
+            Session["secretWord"] = (Session["Game"] as Game).HangmanWord();
         }
     }
 }

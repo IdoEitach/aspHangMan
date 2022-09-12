@@ -1,6 +1,13 @@
 ﻿body {
 }
 
+.secretWordContainer {
+    font-size: 80px;
+    text-align: center;
+    margin: 20px;
+    direction: rtl;
+}
+
 .buttonsContainer {
     display: flex;
     justify-content: center;

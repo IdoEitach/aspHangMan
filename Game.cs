@@ -10,23 +10,31 @@ namespace HangManAsp
         private string word;
         private int wrongGuesses;
         private char[] guessedLetters;
+        private int index;
         public Game(string word)
         {
             this.word = word;
             wrongGuesses = 0;
             guessedLetters = new char[22];
+            index = 0;
         }
-        public bool FindLetter(char letter)
+        public void addLetter(char letter)
         {
-            //if (guessedLetters.Contains(letter))
-            return this.word.Contains(letter);
+            if (index == guessedLetters.Length || guessedLetters.Contains(letter))
+                return;
+            guessedLetters[index] = letter;
+            index++;
+            if (!this.word.Contains(letter))
+                this.wrongGuesses++;
         }
         public string HangmanWord()
         {
             string str = "";
-            for (int i = 0; i < guessedLetters.Length; i++)
-                if (this.word.Contains(guessedLetters[i]))
-                    str += guessedLetters[i] + " ";
+            for (int i = 0; i < word.Length; i++)
+                if(word[i] == ' ')
+                    str += "- ";
+                else if (guessedLetters.Contains(this.word[i]))
+                    str += word[i] + " ";
                 else
                     str += "_ ";
             return str;
