@@ -71,6 +71,7 @@
     <Content Include="HangMan.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="css\HangMan.css" />
+    <Content Include="imgs\icon.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

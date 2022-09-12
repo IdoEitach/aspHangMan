@@ -10,4 +10,21 @@
 
 .buttonsContainer > * {
     margin: 4px;
+    width: 50px;
+    font-size: 30px;
+    font-weight: 600;
+    border-radius: 30px;
+    border-color: transparent;
+    box-shadow: 5px 5px lightblue;
+}
+
+.buttonsContainer > *:hover {
+    cursor: pointer;
+}
+
+.buttonsContainer > *:active {
+    box-shadow: unset;
+    position: relative;
+    left: 5px;
+    top: 5px;
 }
