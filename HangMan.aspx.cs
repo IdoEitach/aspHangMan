@@ -16,7 +16,6 @@ namespace HangManAsp
                 Session["Game"] = new Game("אבג דהו");
                 Session["secretWord"] = (Session["Game"] as Game).HangmanWord();
             }
-            //string[] letters = { "א", "ב", "ג", "ד", "ה", "ו", "ז", "ח", "ט", "י", "כ", "ל", "מ", "נ", "ס", "ע", "פ", "צ", "ק", "ר", "ש", "ת" };
         }
 
         protected void Button_Click(object sender, EventArgs e)
@@ -24,12 +23,16 @@ namespace HangManAsp
             char letter = (sender as Button).Text[0];
             (Session["Game"] as Game).addLetter(letter);
             Session["secretWord"] = (Session["Game"] as Game).HangmanWord();
-            
+            Button_Load(sender, e);
         }
 
         protected void Button_Load(object sender, EventArgs e)
         {
-
+            GuessType type = (Session["Game"] as Game).LetterType((sender as Button).Text[0]);
+            if (type == GuessType.Correct || type == GuessType.Wrong)
+                (sender as Button).CssClass = "pressed";
+            if(type == GuessType.Wrong)
+                (sender as Button).CssClass += " wrong";
         }
     }
 }

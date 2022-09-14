@@ -8,7 +8,7 @@ using System.Web.DynamicData;
 
 namespace HangManAsp
 {
-    enum GuessType
+    public enum GuessType
     {
         Unguessed,
         Wrong,
@@ -33,7 +33,7 @@ namespace HangManAsp
         public void addLetter(char letter)
         {
             int index = LetterToInt(letter);
-            if (guessedLetters[index] != GuessType.Unguessed || this.wrongGuesses > 7)
+            if (guessedLetters[index] != GuessType.Unguessed || this.wrongGuesses >= 7)
             {
                 return;
             }
@@ -59,10 +59,19 @@ namespace HangManAsp
                     str += "_ ";
             return str;
         }
+        public GuessType LetterType(char letter)
+        {
+            return guessedLetters[LetterToInt(letter)];
+        }
+        private static char[] letters = { 'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת' };
 
         public static int LetterToInt(char letter)
         {
-            return letter - 'א';
+            for (int i = 0; i < letters.Length; i++) {
+                if (letters[i] == letter)
+                    return i;
+            }
+            return 0;
         }
     }
 }
