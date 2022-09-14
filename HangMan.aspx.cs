@@ -24,6 +24,7 @@ namespace HangManAsp
             char letter = (sender as Button).Text[0];
             (Session["Game"] as Game).addLetter(letter);
             Session["secretWord"] = (Session["Game"] as Game).HangmanWord();
+            
         }
 
         protected void Button_Load(object sender, EventArgs e)
