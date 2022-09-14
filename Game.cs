@@ -13,6 +13,7 @@ namespace HangManAsp
         private int index;
         public Game(string word)
         {
+            // create the word + wrongGuesses + guessedLetters + index
             this.word = word;
             wrongGuesses = 0;
             guessedLetters = new char[22];
@@ -20,7 +21,7 @@ namespace HangManAsp
         }
         public void addLetter(char letter)
         {
-            if (index == guessedLetters.Length || guessedLetters.Contains(letter))
+            if (index == guessedLetters.Length || guessedLetters.Contains(letter) || this.wrongGuesses==7)//check for the letter is'nt exsist or wrongGuesses!=7
                 return;
             guessedLetters[index] = letter;
             index++;
