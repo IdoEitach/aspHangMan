@@ -29,9 +29,13 @@
     cursor: pointer;
 }
 
-.buttonsContainer > *:active {
+.buttonsContainer > *:active, .pressed {
     box-shadow: unset;
     position: relative;
     left: 5px;
     top: 5px;
+}
+
+.wrong {
+    background-color: red;
 }
