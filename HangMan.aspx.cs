@@ -9,9 +9,19 @@ namespace HangManAsp
 {
     public partial class HangMan : System.Web.UI.Page
     {
+        protected void ChooseRndWord(object sender, EventArgs e)
+        {
+            string sql = "select * From  Cat ;";
+            int ans = SQLHelper.SelectScalarToInt32(sql);
+            Response.Write(ans);
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["Game"] == null)
+            string sql = "select * From  Cat where Category = N'סרטים' ;";
+            string ans = SQLHelper.SelectScalarToString(sql);
+
+            Response.Write(ans);
+            if (Session["Game"] == null)
             {
                 Session["Game"] = new Game("אבג דהו");
                 Session["secretWord"] = (Session["Game"] as Game).HangmanWord();
@@ -23,6 +33,9 @@ namespace HangManAsp
             char letter = (sender as Button).Text[0];
             (Session["Game"] as Game).addLetter(letter);
             Session["secretWord"] = (Session["Game"] as Game).HangmanWord();
+
+         
         }
+        
     }
 }
