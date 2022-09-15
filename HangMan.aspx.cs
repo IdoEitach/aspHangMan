@@ -34,10 +34,6 @@ namespace HangManAsp
             char letter = (sender as Button).Text[0];
             (Session["Game"] as Game).addLetter(letter);
             Session["secretWord"] = (Session["Game"] as Game).HangmanWord();
-<<<<<<< HEAD
-
-         
-=======
             Session["Mistakes"] = (Session["Game"] as Game).WrongGuesses();
             Button_Load(sender, e);
         }
@@ -49,7 +45,7 @@ namespace HangManAsp
                 (sender as Button).CssClass = "pressed";
             if(type == GuessType.Wrong)
                 (sender as Button).CssClass += " wrong";
->>>>>>> 368ffc754a3706172ca8dfbdc268ffae819a8264
+
         }
         
     }
