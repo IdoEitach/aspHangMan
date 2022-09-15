@@ -29,9 +29,24 @@
     cursor: pointer;
 }
 
-.buttonsContainer > *:active {
+.buttonsContainer > *:active, .pressed {
     box-shadow: unset;
     position: relative;
     left: 5px;
     top: 5px;
+    height: 44.1px;
+    margin: 0px 4px 0px -1px;
+}
+
+.wrong {
+    background-color: red;
+}
+
+.hangmanImg {
+    display: flex;
+    justify-content: center;
+}
+
+.hangmanImg > img{
+    width: 300px;
 }
