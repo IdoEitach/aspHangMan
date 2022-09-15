@@ -33,7 +33,7 @@ namespace HangManAsp
         public void addLetter(char letter)
         {
             int index = LetterToInt(letter);
-            if (guessedLetters[index] != GuessType.Unguessed || this.wrongGuesses >= 7)
+            if (guessedLetters[index] != GuessType.Unguessed || this.wrongGuesses >= 6)
             {
                 return;
             }
@@ -64,7 +64,10 @@ namespace HangManAsp
             return guessedLetters[LetterToInt(letter)];
         }
         private static char[] letters = { 'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת' };
-
+        public int WrongGuesses()
+        {
+            return this.wrongGuesses;
+        }
         public static int LetterToInt(char letter)
         {
             for (int i = 0; i < letters.Length; i++) {

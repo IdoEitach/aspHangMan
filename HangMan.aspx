@@ -9,6 +9,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <div class="hangmanImg">
+            <img src="imgs/<%=Session["Mistakes"] %>.png" />
+        </div>
         <div class="secretWordContainer">
             <%=Session["secretWord"] %>
         </div>
