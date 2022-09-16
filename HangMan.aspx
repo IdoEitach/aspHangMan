@@ -9,6 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <h1 class="title">נושא: <%=Session["Cat"] %></h1>
         <div class="hangmanImg">
             <img src="imgs/<%=Session["Mistakes"] %>.png" />
         </div>

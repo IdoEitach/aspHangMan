@@ -11,7 +11,13 @@ namespace HangManAsp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Game"] != null)
+            {
+                string message = "לא ניתן לצאת ממשחק קיים";
+                string urlRedirect = "HangMan.aspx";
+                string script = "window.onload = function(){ alert('"+message+"'); window.location = '"+urlRedirect+"'; }";
+                ClientScript.RegisterStartupScript(this.GetType(), "Redirect", script, true);
+            }
         }
     }
 }

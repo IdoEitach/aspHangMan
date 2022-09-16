@@ -29,15 +29,18 @@
     cursor: pointer;
 }
 
-.buttonsContainer > *:active, .pressed {
+.buttonsContainer > *:active:not(.pressed) {
     box-shadow: unset;
     position: relative;
     left: 5px;
     top: 5px;
-    height: 44.1px;
-    margin: 0px 4px 0px -1px;
 }
-
+.buttonsContainer > *:hover:not(.pressed) {
+    background-color: lightgray;
+}
+.pressed {
+    background-color: green;
+}
 .wrong {
     background-color: red;
 }
@@ -49,4 +52,11 @@
 
 .hangmanImg > img{
     width: 300px;
+}
+
+.title {
+    text-align: center;
+    direction: rtl;
+    font-size: 50px;
+    text-shadow: 2px 2px lightblue;
 }
