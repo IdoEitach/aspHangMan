@@ -14,7 +14,13 @@
             <img src="imgs/<%=Session["Mistakes"] %>.png" />
         </div>
         <div class="secretWordContainer">
-            <%=Session["secretWord"] %>
+            <%=Session["SecretWord"] %>
+        </div>
+        <div class="hintContainer">
+            <div class="hint"><%=Session["Hint"] %></div>
+            <asp:Button ID="ButtonHint" runat="server" Text="קבל רמז" OnClick="ButtonHint_Click" OnLoad="ButtonHint_Load"/>
+        </div>
+        <div>
         </div>
         <div class="buttonsContainer">
             <asp:Button ID="Button1" runat="server" Text="א" OnClick="Button_Click" OnLoad="Button_Load"/>

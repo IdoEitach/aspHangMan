@@ -15,6 +15,25 @@
     flex-direction: row-reverse;
 }
 
+.hintContainer {
+    display: flex;
+    justify-content: center;
+    margin: 8px;
+}
+
+.hintContainer > input {
+    font-size: 16px;
+    padding: 12px;
+}
+
+.hint:not(:empty) {
+    padding: 4px 8px;
+    border: 2px dashed black;
+    font-size: 22px;
+    direction: rtl;
+    border-radius: 8px;
+}
+
 .buttonsContainer > * {
     margin: 4px;
     width: 50px;

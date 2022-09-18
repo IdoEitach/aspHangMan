@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HangManAsp {
-    
-    
-    public partial class HangMan {
-        
+namespace HangManAsp
+{
+
+
+    public partial class HangMan
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,7 +22,16 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
+        /// <summary>
+        /// ButtonHint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonHint;
+
         /// <summary>
         /// Button1 control.
         /// </summary>
@@ -29,7 +40,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-        
+
         /// <summary>
         /// Button2 control.
         /// </summary>
@@ -38,7 +49,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
-        
+
         /// <summary>
         /// Button4 control.
         /// </summary>
@@ -47,7 +58,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button4;
-        
+
         /// <summary>
         /// Button3 control.
         /// </summary>
@@ -56,7 +67,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button3;
-        
+
         /// <summary>
         /// Button5 control.
         /// </summary>
@@ -65,7 +76,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button5;
-        
+
         /// <summary>
         /// Button6 control.
         /// </summary>
@@ -74,7 +85,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button6;
-        
+
         /// <summary>
         /// Button7 control.
         /// </summary>
@@ -83,7 +94,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button7;
-        
+
         /// <summary>
         /// Button8 control.
         /// </summary>
@@ -92,7 +103,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button8;
-        
+
         /// <summary>
         /// Button9 control.
         /// </summary>
@@ -101,7 +112,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button9;
-        
+
         /// <summary>
         /// Button10 control.
         /// </summary>
@@ -110,7 +121,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button10;
-        
+
         /// <summary>
         /// Button11 control.
         /// </summary>
@@ -119,7 +130,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button11;
-        
+
         /// <summary>
         /// Button12 control.
         /// </summary>
@@ -128,7 +139,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button12;
-        
+
         /// <summary>
         /// Button13 control.
         /// </summary>
@@ -137,7 +148,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button13;
-        
+
         /// <summary>
         /// Button14 control.
         /// </summary>
@@ -146,7 +157,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button14;
-        
+
         /// <summary>
         /// Button15 control.
         /// </summary>
@@ -155,7 +166,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button15;
-        
+
         /// <summary>
         /// Button16 control.
         /// </summary>
@@ -164,7 +175,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button16;
-        
+
         /// <summary>
         /// Button17 control.
         /// </summary>
@@ -173,7 +184,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button17;
-        
+
         /// <summary>
         /// Button18 control.
         /// </summary>
@@ -182,7 +193,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button18;
-        
+
         /// <summary>
         /// Button19 control.
         /// </summary>
@@ -191,7 +202,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button19;
-        
+
         /// <summary>
         /// Button20 control.
         /// </summary>
@@ -200,7 +211,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button20;
-        
+
         /// <summary>
         /// Button21 control.
         /// </summary>
@@ -209,7 +220,7 @@ namespace HangManAsp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button21;
-        
+
         /// <summary>
         /// Button22 control.
         /// </summary>

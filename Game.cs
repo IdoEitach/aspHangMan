@@ -17,17 +17,18 @@ namespace HangManAsp
 
     public class Game
     {
-        private string word;
+        private Word word;
         private int wrongGuesses;
         private GuessType[] guessedLetters;
         private static char[] letters = { 'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת' };
+        private Random rnd = new Random();
 
-        public Game(string word)
+        public Game(Word word)
         {
             // create the word + wrongGuesses + guessedLetters + index
             this.word = word;
-            wrongGuesses = 0;
-            guessedLetters = new GuessType[letters.Length];
+            this.wrongGuesses = 0;
+            this.guessedLetters = new GuessType[letters.Length];
         }
         public void addLetter(char letter)
         {
@@ -37,7 +38,7 @@ namespace HangManAsp
                 return;
             }
             guessedLetters[index] = GuessType.Correct;
-            if (!this.word.Contains(letter))
+            if (!this.word.GetWord().Contains(letter))
             {
                 guessedLetters[index] = GuessType.Wrong;
                 this.wrongGuesses++;
@@ -50,11 +51,12 @@ namespace HangManAsp
         public string GetHangmanWord()
         {
             string str = "";
+            string word = this.word.GetWord();
             for (int i = 0; i < word.Length; i++)
             {
                 if (word[i] == ' ')
                     str += "- ";
-                else if (guessedLetters[LetterToInt(LowerLetter(this.word[i]))] == GuessType.Correct)
+                else if (guessedLetters[LetterToInt(LowerLetter(word[i]))] == GuessType.Correct)
                     str += word[i] + " ";
                 else
                     str += "_ ";
@@ -91,6 +93,11 @@ namespace HangManAsp
                     return i;
             }
             return 0;
+        }
+
+        public string GetRandomHint()
+        {
+            return this.word.GetHints()[this.rnd.Next(this.word.GetHints().Length)];
         }
     }
 }
