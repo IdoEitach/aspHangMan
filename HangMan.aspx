@@ -14,6 +14,9 @@
         <div class="hangmanImg">
             <img src="imgs/<%=Session["Mistakes"] %>.png" />
         </div>
+        <div class="endTextContainer">
+            <%=Session["WinHtml"] %>
+        </div>
         <div class="secretWordContainer">
             <%=Session["SecretWord"] %>
         </div>

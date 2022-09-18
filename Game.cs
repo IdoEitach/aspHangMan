@@ -15,6 +15,13 @@ namespace HangManAsp
         Correct,
     }
 
+    public enum GameStatus
+    {
+        Playing,
+        Lost,
+        Won,
+    }
+
     public class Game
     {
         private Word word;
@@ -22,6 +29,8 @@ namespace HangManAsp
         private GuessType[] guessedLetters;
         private static char[] letters = { 'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת' };
         private Random rnd = new Random();
+        private const int NumberOfGuesses = 6;
+        private GameStatus gameStatus;
 
         public Game(Word word)
         {
@@ -29,29 +38,46 @@ namespace HangManAsp
             this.word = word;
             this.wrongGuesses = 0;
             this.guessedLetters = new GuessType[letters.Length];
+            this.gameStatus = GameStatus.Playing;
         }
         public void addLetter(char letter)
         {
             int index = LetterToInt(letter);
-            if (guessedLetters[index] != GuessType.Unguessed || this.wrongGuesses >= 6)
+            if (guessedLetters[index] != GuessType.Unguessed || this.wrongGuesses >= NumberOfGuesses)
             {
                 return;
             }
             guessedLetters[index] = GuessType.Correct;
-            if (!this.word.GetWord().Contains(letter))
+            if (!this.word.GetText().Contains(letter))
             {
                 guessedLetters[index] = GuessType.Wrong;
                 this.wrongGuesses++;
+                if (GetGuessesLeft() == 0)
+                {
+                    this.gameStatus = GameStatus.Lost;
+                }
             }
             else
             {
                 guessedLetters[index] = GuessType.Correct;
+                if (IsWordFinished())
+                {
+                    this.gameStatus = GameStatus.Won;
+                }
             }
+        }
+        public string GetRandomHint()
+        {
+            return this.word.GetHints()[this.rnd.Next(this.word.GetHints().Length)] + ".";
+        }
+        public Word GetWord()
+        {
+            return this.word;
         }
         public string GetHangmanWord()
         {
             string str = "";
-            string word = this.word.GetWord();
+            string word = this.word.GetText();
             for (int i = 0; i < word.Length; i++)
             {
                 if (word[i] == ' ')
@@ -63,16 +89,35 @@ namespace HangManAsp
             }
             return str;
         }
-        public GuessType LetterType(char letter)
+        public GuessType GetLetterType(char letter)
         {
             return guessedLetters[LetterToInt(letter)];
         }
-
+        public GameStatus GetGameStatus()
+        {
+            return this.gameStatus;
+        }
         public int GetWrongGuesses()
         {
             return this.wrongGuesses;
         }
 
+        private int GetGuessesLeft()
+        {
+            return Game.NumberOfGuesses - this.wrongGuesses;
+        }
+        private bool IsWordFinished()
+        {
+            string word = this.word.GetText();
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (guessedLetters[LetterToInt(LowerLetter(word[i]))] != GuessType.Correct)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         private static char LowerLetter(char letter)
         {
             switch (letter)
@@ -95,9 +140,5 @@ namespace HangManAsp
             return 0;
         }
 
-        public string GetRandomHint()
-        {
-            return this.word.GetHints()[this.rnd.Next(this.word.GetHints().Length)];
-        }
     }
 }
