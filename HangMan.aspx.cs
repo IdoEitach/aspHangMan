@@ -26,47 +26,34 @@ namespace HangManAsp
             if (Session["Game"] == null)
             {
                 string cat = Request.QueryString["cat"];
+                string word = ChooseRndWord(cat);
+                
                 Session["Cat"] = cat;
-                Session["Game"] = new Game(ChooseRndWord(cat));
-                Session["secretWord"] = (Session["Game"] as Game).HangmanWord();
-                Session["Mistakes"] = (Session["Game"] as Game).WrongGuesses();
+                Session["Game"] = new Game(word);
+                Session["secretWord"] = (Session["Game"] as Game).GetHangmanWord();
+                Session["Mistakes"] = (Session["Game"] as Game).GetWrongGuesses();
             }
         }
 
         protected void Button_Click(object sender, EventArgs e)
         {
             char letter = (sender as Button).Text[0];
-            switch (letter)
-            {
-                case 'כ':
-                    (Session["Game"] as Game).addLetter('כ', 'ך');
-                    break;
-                case 'מ':
-                    (Session["Game"] as Game).addLetter('מ', 'ם');
-                    break;
-                case 'נ':
-                    (Session["Game"] as Game).addLetter('נ', 'ן');
-                    break;
-                case 'פ':
-                    (Session["Game"] as Game).addLetter('פ', 'ף');
-                    break;
-                case 'צ':
-                    (Session["Game"] as Game).addLetter('כ', 'ך');
-                    break;
-                default:
-                    (Session["Game"] as Game).addLetter(letter);
-                    break;
-            }
-            Session["secretWord"] = (Session["Game"] as Game).HangmanWord();
-            Session["Mistakes"] = (Session["Game"] as Game).WrongGuesses();
+
+             (Session["Game"] as Game).addLetter(letter);
+             
+            Session["secretWord"] = (Session["Game"] as Game).GetHangmanWord();
+            Session["Mistakes"] = (Session["Game"] as Game).GetWrongGuesses();
             Button_Load(sender, e);
         }
 
         protected void Button_Load(object sender, EventArgs e)
         {
             GuessType type = (Session["Game"] as Game).LetterType((sender as Button).Text[0]);
-            if (type == GuessType.Correct || type == GuessType.Wrong || type == GuessType.HalfCorrect)
+            if (type != GuessType.Unguessed)
+            {
                 (sender as Button).CssClass = "pressed";
+                (sender as Button).Enabled = false;
+            }
             if(type == GuessType.Wrong)
                 (sender as Button).CssClass += " wrong";
         }
