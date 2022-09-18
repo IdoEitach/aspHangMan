@@ -9,6 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:Button ID="ButtonBack" runat="server" CssClass="btn" Text="חזרה" OnClick="ButtonBack_Click"/>
         <h1 class="title">נושא: <%=Session["Cat"] %></h1>
         <div class="hangmanImg">
             <img src="imgs/<%=Session["Mistakes"] %>.png" />
@@ -18,7 +19,7 @@
         </div>
         <div class="hintContainer">
             <div class="hint"><%=Session["Hint"] %></div>
-            <asp:Button ID="ButtonHint" runat="server" Text="קבל רמז" OnClick="ButtonHint_Click" OnLoad="ButtonHint_Load"/>
+            <asp:Button ID="ButtonHint" runat="server" CssClass="btn" Text="קבל רמז" OnClick="ButtonHint_Click" OnLoad="ButtonHint_Load"/>
         </div>
         <div>
         </div>

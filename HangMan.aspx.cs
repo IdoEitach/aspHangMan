@@ -60,5 +60,11 @@ namespace HangManAsp
             }
             
         }
+
+        protected void ButtonBack_Click(object sender, EventArgs e)
+        {
+            Session["Game"] = null;
+            Response.Redirect("HomePage.aspx");
+        }
     }
 }
