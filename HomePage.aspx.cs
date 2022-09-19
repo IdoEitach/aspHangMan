@@ -11,6 +11,9 @@ namespace HangManAsp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetExpires(DateTime.Now.AddSeconds(-1));
+            Response.Cache.SetNoStore();
             if (Session["Game"] != null)
             {
                 string message = "לא ניתן לצאת ממשחק קיים";

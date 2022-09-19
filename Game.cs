@@ -48,7 +48,7 @@ namespace HangManAsp
                 return;
             }
             guessedLetters[index] = GuessType.Correct;
-            if (!this.word.GetText().Contains(letter))
+            if (!LowerText(this.word.GetText()).Contains(letter))
             {
                 guessedLetters[index] = GuessType.Wrong;
                 this.wrongGuesses++;
@@ -68,7 +68,10 @@ namespace HangManAsp
         }
         public string GetRandomHint()
         {
-            return this.word.GetHints()[this.rnd.Next(this.word.GetHints().Length)] + ".";
+            string[] hints = this.word.GetHints();
+            if (hints[0] == "")
+                return "אין כרגע רמז למילה זאת.";
+            return hints[this.rnd.Next(hints.Length)] + ".";
         }
         public Word GetWord()
         {
@@ -129,6 +132,16 @@ namespace HangManAsp
                 case 'ץ': return 'צ';
                 default: return letter;
             }
+        }
+
+        private static string LowerText(string text)
+        {
+            string lowerText = "";
+            for (int i = 0; i < text.Length; i++)
+            {
+                lowerText += LowerLetter(text[i]);
+            }
+            return lowerText;
         }
 
         public static int LetterToInt(char letter)

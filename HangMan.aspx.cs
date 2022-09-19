@@ -14,9 +14,14 @@ namespace HangManAsp
             if (Session["Game"] == null)
             {
                 string cat = Request.QueryString["cat"];
-                Word word = Word.GetRandomFromCategory(cat);
+                string title = Request.QueryString["title"];
+                Word word;
+                if (cat != "General")
+                    word = Word.GetRandomFromCategory(cat);
+                else
+                    word = Word.GetRandom();
 
-                Session["Cat"] = cat;
+                Session["Cat"] = title;
                 Session["Game"] = new Game(word);
                 Session["SecretWord"] = (Session["Game"] as Game).GetHangmanWord();
                 Session["Mistakes"] = (Session["Game"] as Game).GetWrongGuesses();
@@ -97,11 +102,10 @@ namespace HangManAsp
 
             (ButtonBack as Button).Style.Add(HtmlTextWriterStyle.Display, null);
 
-
             Session["Won"] = won;
             Session["WinHtml"] = won
-                   ? $"<div style=\"color: green;\">You won!</div>"
-                   : $"<div style=\"color: red;\">You lost. The word was {game.GetWord().GetText()}.</div>";
+                   ? $"<div style=\"color: green;\">ניצחת!</div>"
+                   : $"<div style=\"color: red;\">הפסדת. המילה הייתה: <b>{game.GetWord().GetText()}</b></div>";
         }
 
     }
