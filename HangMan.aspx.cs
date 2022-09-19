@@ -15,7 +15,7 @@ namespace HangManAsp
             {
                 string cat = Request.QueryString["cat"];
                 Word word = Word.GetRandomFromCategory(cat);
-                
+
                 Session["Cat"] = cat;
                 Session["Game"] = new Game(word);
                 Session["SecretWord"] = (Session["Game"] as Game).GetHangmanWord();
@@ -54,7 +54,7 @@ namespace HangManAsp
                 (sender as Button).CssClass = "pressed";
                 (sender as Button).Enabled = false;
             }
-            if(type == GuessType.Wrong)
+            if (type == GuessType.Wrong)
                 (sender as Button).CssClass += " wrong";
         }
 
@@ -70,13 +70,24 @@ namespace HangManAsp
             {
                 (sender as Button).Style.Add(HtmlTextWriterStyle.Display, "none");
             }
-            
+
         }
 
         protected void ButtonBack_Click(object sender, EventArgs e)
         {
-            Session["Game"] = null;
-            Response.Redirect("HomePage.aspx");
+            if (Session["Won"] != null)
+            {
+                Session["Game"] = null;
+                Response.Redirect("HomePage.aspx");
+            }
+
+        }
+        protected void ButtonBack_Load(object sender, EventArgs e)
+        {
+            if (Session["Won"] == null)
+            {
+                (sender as Button).Style.Add(HtmlTextWriterStyle.Display, "none");
+            }
         }
 
         private void EndGame()
@@ -84,10 +95,14 @@ namespace HangManAsp
             Game game = Session["Game"] as Game;
             bool won = game.GetGameStatus() == GameStatus.Won;
 
+            (ButtonBack as Button).Style.Add(HtmlTextWriterStyle.Display, null);
+
+
             Session["Won"] = won;
             Session["WinHtml"] = won
-                   ? $"<div style=\"color: green;\">You won!</div>" 
+                   ? $"<div style=\"color: green;\">You won!</div>"
                    : $"<div style=\"color: red;\">You lost. The word was {game.GetWord().GetText()}.</div>";
         }
+
     }
 }
