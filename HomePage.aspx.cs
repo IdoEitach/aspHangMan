@@ -11,6 +11,11 @@ namespace HangManAsp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["PlayerName"] == null)
+            {
+                Session["PlayerName"] = Utils.GetRandomUsername();
+            }
+
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Cache.SetExpires(DateTime.Now.AddSeconds(-1));
             Response.Cache.SetNoStore();
@@ -21,6 +26,19 @@ namespace HangManAsp
                 string script = "window.onload = function(){ alert('"+message+"'); window.location = '"+urlRedirect+"'; }";
                 ClientScript.RegisterStartupScript(this.GetType(), "Redirect", script, true);
             }
+        }
+
+        protected void TextBoxName_Load(object sender, EventArgs e)
+        {
+            if (!Page.IsPostBack)
+            {
+                (sender as TextBox).Text = Session["PlayerName"] as string;
+            }
+        }
+
+        protected void TextBoxName_TextChanged(object sender, EventArgs e)
+        {
+            Session["PlayerName"] = (sender as TextBox).Text;
         }
     }
 }

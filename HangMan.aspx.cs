@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -100,7 +101,20 @@ namespace HangManAsp
             Game game = Session["Game"] as Game;
             bool won = game.GetGameStatus() == GameStatus.Won;
 
-            (ButtonBack as Button).Style.Add(HtmlTextWriterStyle.Display, null);
+            string log;
+            if (won)
+            {
+                log = $"Player \"{Session["PlayerName"] ?? Utils.GetRandomUsername()}\" successfully guessed \"{game.GetWord().GetText()}\" with {game.GetWrongGuesses()} wrong guesses.";
+            } 
+            else
+            {
+                log = $"Player \"{Session["PlayerName"] ?? Utils.GetRandomUsername()}\" failed to guess \"{game.GetWord().GetText()}\" with {game.GetWrongGuesses()} wrong guesses.";
+            }
+
+            File.AppendAllText(Request.MapPath("data.txt"),
+                $"[{DateTime.Now.ToString("MM/dd/yyyy HH:mm")}] {log}\n");
+
+            ButtonBack.Style.Add(HtmlTextWriterStyle.Display, null);
 
             Session["Won"] = won;
             Session["WinHtml"] = won

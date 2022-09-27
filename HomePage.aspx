@@ -12,6 +12,8 @@
         <div>
             <h1>איש תלוי</h1>
             <img src="imgs/icon.png" width="100px"/>
+            <br />
+            <asp:TextBox ID="TextBoxName" AutoPostBack="true" runat="server" onLoad="TextBoxName_Load" OnTextChanged="TextBoxName_TextChanged"></asp:TextBox><label>:שם</label>
             <h1>קטגוריות לבחירה</h1>
             <div class="categoriesContainer">
                 <a href="HangMan.aspx?cat=General&title=ידע כללי">ידע כללי</a>
