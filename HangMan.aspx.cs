@@ -48,7 +48,6 @@ namespace HangManAsp
             if (game.GetGameStatus() != GameStatus.Playing)
             {
                 this.EndGame();
-                ButtonHint.Style.Add(HtmlTextWriterStyle.Display, "none");
             }
         }
 
@@ -98,6 +97,7 @@ namespace HangManAsp
 
         private void EndGame()
         {
+            ButtonHint.Style.Add(HtmlTextWriterStyle.Display, "none");
             Game game = Session["Game"] as Game;
             bool won = game.GetGameStatus() == GameStatus.Won;
 
@@ -105,14 +105,20 @@ namespace HangManAsp
             if (won)
             {
                 log = $"Player \"{Session["PlayerName"] ?? Utils.GetRandomUsername()}\" successfully guessed \"{game.GetWord().GetText()}\" with {game.GetWrongGuesses()} wrong guesses.";
-            } 
+            }
             else
             {
                 log = $"Player \"{Session["PlayerName"] ?? Utils.GetRandomUsername()}\" failed to guess \"{game.GetWord().GetText()}\" with {game.GetWrongGuesses()} wrong guesses.";
             }
-
+            if (Session["Hint"] != null)
+            {
+                log += " (Used an hint "+ Session["Hint"] + ")";
+                
+            }
             File.AppendAllText(Request.MapPath("data.txt"),
-                $"[{DateTime.Now.ToString("MM/dd/yyyy HH:mm")}] {log}\n");
+                $"[{DateTime.Now.ToString("dd/MM/yyyy HH:mm")}] {log}\n");
+            
+           
 
             ButtonBack.Style.Add(HtmlTextWriterStyle.Display, null);
 
