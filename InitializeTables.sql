@@ -32,5 +32,5 @@ CREATE TABLE [dbo].[Dogs] (
 
 --Data
 SET IDENTITY_INSERT [dbo].[Dogs] ON
-INSERT INTO [dbo].[Dogs] ([Id], [Word], [Hints]) VALUES (1, N'דוברמן', N'נגמר ב"מן". מתחיל ב"דובר". יש "בר')
+INSERT INTO [dbo].[Dogs] ([Id], [Word], [Hints]) VALUES (1, N'דוברמן', N'נגמר ב"מן". מתחיל ב"דובר". יש "בר"')
 SET IDENTITY_INSERT [dbo].[Dogs] OFF
